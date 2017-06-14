@@ -1,0 +1,40 @@
+<!--
+  Generated template for the Usuarios page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>
+      Usuarios
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="salir()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2>La contraseña para nuevos usuarios es: {{passGral}}</h2>
+  <p *ngIf="vacio == 0">
+    No hay ningún usuario registrado
+  </p>
+  <ion-list>
+    <ion-item *ngFor="let user of usuarios">
+      {{user.dpto}}
+      
+      <button ion-button item-end round icon-only large>
+        <ion-icon name="logo-usd"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button (click)="agregar()">Agregar usuario</button>
+</ion-content>

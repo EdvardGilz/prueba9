@@ -1,0 +1,54 @@
+<!--
+  Generated template for the LoginAdmin page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Acceso a administradores
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="buscar == 1">
+    <ion-searchbar placeholder="Buscar localidad" [(ngModel)]="nombre" (input)="verificaLlenado()"></ion-searchbar>
+
+    <button ion-button (click)="buscarAdm()" [disabled]="disbled" *ngIf="encontrado == 0">Buscar</button>
+
+    <div *ngIf="encontrado == 1">
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="pass" (input)="verificaLlenado()"></ion-input>
+      </ion-item>
+
+      <button ion-button (click)="entrar()" [disabled]="disabled2">Entrar</button>
+    </div>
+
+    <div>
+      <button ion-button (click)="usuario()">Usuario</button>
+      <button ion-button (click)="nuevo()">Nueva administración</button>
+    </div>
+  </div>
+
+  <div *ngIf="buscar == 0">
+    <ion-item>
+      <ion-label floating>Nombre de tu administración</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre" (input)="verificaLlenado()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="pass" (input)="verificaLlenado()"></ion-input>
+    </ion-item>
+    
+    <button ion-button (click)="buscarAdm()" [disabled]="disbled">Guardar</button>
+    
+    <div>
+      <button ion-button (click)="usuario()">Usuario</button>
+      <button ion-button (click)="buscarC()">Buscar administración</button>
+    </div>
+  </div>
+</ion-content>

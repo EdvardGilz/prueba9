@@ -24,6 +24,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.administradordecondominios327776"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ionicframework.administradordecondominios327776"
         }
     },
     "dependent_plugins": {}

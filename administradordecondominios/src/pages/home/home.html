@@ -1,14 +1,44 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
+    
     <ion-title>
-      Ionic Blank
+      <h2>{{nombreAdm}}</h2>
+      <small>{{txt}} {{usuario}}</small>
     </ion-title>
-  </ion-navbar>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="salir()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="card-background-page">
+
+  <ion-card (click)="modal(0)">
+    <img src="assets/images/img.jpg"/>
+    <div class="card-title">Usuarios</div>
+    <div class="card-subtitle">Administra a los usuario</div>
+  </ion-card>
+
+  <ion-card (click)="modal(1)">
+    <img src="assets/images/img2.jpg"/>
+    <div class="card-title">Balance</div>
+    <div class="card-subtitle">Revisa las entradas y salidas de dinero</div>
+  </ion-card>
+
+  <ion-card  (click)="modal(2)">
+    <img src="assets/images/img3.jpg"/>
+    <div class="card-title">Asuntos por resolver</div>
+    <div class="card-subtitle">Revisa o da de alta un asunto por resolver</div>
+  </ion-card>
+
+  <ion-card (click)="modal(3)">
+    <img src="assets/images/img4.jpg"/>
+    <div class="card-title">Avisos</div>
+    <div class="card-subtitle">Agrega una nuevo aviso</div>
+  </ion-card>
+
 </ion-content>
