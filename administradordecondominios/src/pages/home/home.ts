@@ -19,6 +19,7 @@ import { Avisos } from '../avisos/avisos';
 export class HomePage {
   public txt;
   public nombreAdm = "";
+  public usuario = "";
   public userData: UserDataModel;
 
   constructor(public navCtrl: NavController,
@@ -41,6 +42,7 @@ export class HomePage {
       }
 
       this.nombreAdm = this.userData.nombreAdmin;
+      this.usuario = this.userData.dpto;
       console.log(this.userData);
     });
   }

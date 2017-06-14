@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { SuccessModel, UserModel } from '../models/models';
+import { SuccessModel, UserModel, PagoDataModel, PagoModel } from '../models/models';
 
 import { Global } from './global';
 
@@ -88,6 +88,39 @@ export class Api {
     var passGral = this.global.getUserData().passGral;
     return new Promise<SuccessModel>(resolve => {
       this.http.get(`http://localhost:8888/api/api.php/guardarUser/${id}/${passGral}/${dpto}/`)
+        .map(res => <SuccessModel>(res.json()))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
+  loginUsuario(user, pass) {
+    var id = this.global.getUserData().idCondominio;
+    return new Promise<SuccessModel>(resolve => {
+      this.http.get(`http://localhost:8888/api/api.php/loginUsuario/${id}/${user}/${pass}/`)
+        .map(res => <SuccessModel>(res.json()))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
+  pagar(pagoData: PagoDataModel) {
+    var data = JSON.stringify({"data": pagoData});
+    return new Promise<SuccessModel>(resolve => {
+      this.http.post(`http://localhost:8888/api/api.php/pagar/`, data)
+        .map(res => <SuccessModel>(res.json()))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
+  buscarIngresos() {
+    var id = this.global.getUserData().idCondominio;
+    return new Promise<SuccessModel>(resolve => {
+      this.http.get(`http://localhost:8888/api/api.php/buscarIngresos/${id}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);

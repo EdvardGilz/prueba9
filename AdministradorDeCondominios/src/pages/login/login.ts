@@ -76,16 +76,28 @@ export class Login {
   }
 
   entrar() {
-    // this.api.loginC(this.pass)
-    // .then((data) => {
-    //   this.resData = data;
-    //   if (this.resData.success == 0) {
-    //     this.commonFctns.despliegaAlerta("Error", "Contraseña incorrecta");
-    //   }
-    //   else {
-    //     console.log("entrar")
-    //   }
-    // });
+    this.api.loginUsuario(this.casa, this.pass)
+    .then((data) => {
+      this.resData = data;
+      if (this.resData.success == 0) {
+        if (this.resData.id == -1) {
+          this.commonFctns.despliegaAlerta("Error", "Contraseña incorrecta");
+        }
+        else if (this.resData.id == -2) {
+          this.commonFctns.despliegaAlerta("Error", "Usuario no encontrado");
+        }
+        else {
+          this.commonFctns.despliegaAlerta("Error", "Ocurrió un error inesperado, intentalo de nuevo");
+        }
+      }
+      else {
+        this.global.setUsuario(this.resData.id);
+        this.global.setAdmin(0);
+        this.global.setDpto(this.casa);
+        this.global.setNombreAdm(this.nombre);
+        this.navCtrl.setRoot(HomePage);
+      }
+    });
   }
 
   admin() {

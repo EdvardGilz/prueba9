@@ -27,13 +27,15 @@
     No hay ningún usuario registrado
   </p>
   <ion-list>
+
     <ion-item *ngFor="let user of usuarios">
       {{user.dpto}}
       
-      <button ion-button item-end round icon-only large>
+      <button ion-button item-end round icon-only large (click)="pagar(user)">
         <ion-icon name="logo-usd"></ion-icon>
       </button>
     </ion-item>
+
   </ion-list>
 
   <button ion-button (click)="agregar()">Agregar usuario</button>

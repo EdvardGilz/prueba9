@@ -5,7 +5,7 @@ import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
 import { Global } from '../../providers/global';
 
-import { UserModel, UserDataModel } from '../../models/models';
+import { UserModel, UserDataModel, PagoDataModel } from '../../models/models';
 
 /**
  * Generated class for the Usuarios page.
@@ -23,6 +23,7 @@ export class Usuarios {
   public usuarios: UserDataModel[] = [];
   public vacio;
   public passGral;
+  public pagoData: PagoDataModel = new PagoDataModel();
 
   constructor(public viewCtrl: ViewController,
               public api: Api,
@@ -70,6 +71,53 @@ export class Usuarios {
                 this.commonFctns.despliegaAlerta("Error", "Ocurrió un error inesperado, intentalo de nuevo");
               }
             });
+          }
+        }
+      ]
+    });
+
+    prompt.present();
+  }
+
+  pagar(user) {
+    let prompt = this.alertCtrl.create({
+      title: "Pago",
+      message: "Agrega un pago del usuario",
+      inputs: [
+        {
+          name: "cantidad",
+          placeholder: "Cantidad",
+          type: "number"
+        },
+        {
+          name: "notas",
+          placeholder: "Notas",
+          type: "text"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancelar",
+          role: "cancel"
+        },
+        {
+          text: "Guardar",
+          handler: data => {
+            if (data.cantidad != "") {
+              this.pagoData.idCondominio = this.global.getUserData().idCondominio;
+              this.pagoData.idUser = user.id;
+              this.pagoData.cantidad = data.cantidad;
+              this.pagoData.nota = data.notas;
+
+              this.api.pagar(this.pagoData).then((data) => {
+                if (data.success == 1) {
+                  this.commonFctns.despliegaAlerta("Correcto", "El pago fue registrado");
+                }
+                else {
+                  this.commonFctns.despliegaAlerta("Error", "Ocurrió un error inesperado, intentalo de nuevo");
+                }
+              });
+            }
           }
         }
       ]

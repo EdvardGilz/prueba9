@@ -16,3 +16,16 @@ export class UserDataModel {
 	nombreAdmin: string;
 	passGral: string;
 }
+
+export class PagoModel {
+	success: number;
+	data: Array<PagoDataModel>;
+}
+
+export class PagoDataModel {
+	idCondominio: number;
+	idUser: number;
+	cantidad: number;
+	fecha: string;
+	nota: string;
+}
