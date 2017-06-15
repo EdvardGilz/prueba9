@@ -21,7 +21,7 @@ export class Api {
 
   guardarC(nombre, pass) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/guardarC/${nombre}/${pass}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/guardarC/${nombre}/${pass}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -31,7 +31,7 @@ export class Api {
 
   buscarC(nombre) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/buscarC/${nombre}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/buscarC/${nombre}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -42,7 +42,7 @@ export class Api {
   loginC(pass) {
     var id = this.global.getUserData().idCondominio;
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/loginC/${id}/${pass}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/loginC/${id}/${pass}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -53,7 +53,7 @@ export class Api {
   altaAdmin() {
     var id = this.global.getUserData().idCondominio;
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/altaAdmin/${id}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/altaAdmin/${id}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -64,7 +64,7 @@ export class Api {
   buscaAdmin() {
     var id = this.global.getUserData().idCondominio;
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/buscaAdmin/${id}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/buscaAdmin/${id}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -75,7 +75,7 @@ export class Api {
   buscaUsuarios() {
     var id = this.global.getUserData().idCondominio;
     return new Promise<UserModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/buscaUsuarios/${id}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/buscaUsuarios/${id}/`)
         .map(res => <UserModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -87,7 +87,7 @@ export class Api {
     var id = this.global.getUserData().idCondominio;
     var passGral = this.global.getUserData().passGral;
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/guardarUser/${id}/${passGral}/${dpto}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/guardarUser/${id}/${passGral}/${dpto}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -98,7 +98,7 @@ export class Api {
   loginUsuario(user, pass) {
     var id = this.global.getUserData().idCondominio;
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/loginUsuario/${id}/${user}/${pass}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/loginUsuario/${id}/${user}/${pass}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -109,7 +109,7 @@ export class Api {
   pagar(pagoData: PagoDataModel) {
     var data = JSON.stringify({"data": pagoData});
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://localhost:8888/api/api.php/pagar/`, data)
+      this.http.post(`http://pointown.com/tech/api2/api.php/pagar/`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -120,7 +120,7 @@ export class Api {
   buscarIngresos() {
     var id = this.global.getUserData().idCondominio;
     return new Promise<PagoModel>(resolve => {
-      this.http.get(`http://localhost:8888/api/api.php/buscarIngresos/${id}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/buscarIngresos/${id}/`)
         .map(res => <PagoModel>(res.json()))
         .subscribe(data => {
           resolve(data);
