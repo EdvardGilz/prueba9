@@ -79,7 +79,8 @@ export class LoginAdmin {
 
   buscarAdm() {
     if (this.buscar == 0) {
-      this.api.guardarC(this.nombre, this.pass)
+      var passGral = this.generarPass();
+      this.api.guardarC(this.nombre, this.pass, passGral)
       .then((data) => {
         this.resData = data;
         if (this.resData.success == 0) {
@@ -109,7 +110,7 @@ export class LoginAdmin {
               this.global.setAdmin(1);
               this.global.setDpto(0);
               this.global.setNombreAdm(this.nombre);
-              this.global.setPassGral(this.generarPass());
+              this.global.setPassGral(passGral);
               this.navCtrl.setRoot(HomePage);
             }
           });
@@ -139,6 +140,7 @@ export class LoginAdmin {
         this.commonFctns.despliegaAlerta("Error", "Contraseña incorrecta");
       }
       else {
+        var passGral = this.resData.id;
         this.api.buscaAdmin()
         .then((data) => {
           this.resData = data;
@@ -152,6 +154,7 @@ export class LoginAdmin {
             this.global.setAdmin(1);
             this.global.setDpto(0);
             this.global.setNombreAdm(this.nombre);
+            this.global.setPassGral(passGral);
             this.navCtrl.setRoot(HomePage);
           }
         })

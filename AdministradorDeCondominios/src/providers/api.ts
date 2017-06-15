@@ -19,9 +19,9 @@ export class Api {
               private global: Global) {
   }
 
-  guardarC(nombre, pass) {
+  guardarC(nombre, pass, passGral) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api2/api.php/guardarC/${nombre}/${pass}/`)
+      this.http.get(`http://pointown.com/tech/api2/api.php/guardarC/${nombre}/${pass}/${passGral}/`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
