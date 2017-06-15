@@ -25,6 +25,7 @@ export class PagoModel {
 export class PagoDataModel {
 	idCondominio: number;
 	idUser: number;
+	dpto: string;
 	cantidad: number;
 	fecha: string;
 	nota: string;

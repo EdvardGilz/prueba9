@@ -5,10 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar  color="primary">
     
     <ion-title>
-      Balance
+      <h2>Balance</h2>
+      <small>{{suma | currency:'USD':true:'1.2-2'}}</small>
     </ion-title>
 
     <ion-buttons end>
@@ -21,6 +22,33 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div>
+    <ion-segment [(ngModel)]="balance">
+      <ion-segment-button value="entradas">
+        Entradas
+      </ion-segment-button>
+      <ion-segment-button value="salidas">
+        Salidas
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
+  <div [ngSwitch]="balance">
+
+    <div *ngSwitchCase="'entradas'">
+      <ion-list>
+        <ion-item *ngFor="let pago of pagos">
+          <ion-note item-right>{{pago.fecha | date:'dd/MM/yy'}}</ion-note>
+          <h2>{{pago.dpto}}</h2>
+          <h3>{{pago.cantidad | currency:'USD':true:'1.2-2'}}</h3>
+          <p text-wrap>{{pago.nota}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'salidas'">
+    </div>
+
+  </div>
 </ion-content>

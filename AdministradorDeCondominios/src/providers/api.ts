@@ -119,9 +119,9 @@ export class Api {
 
   buscarIngresos() {
     var id = this.global.getUserData().idCondominio;
-    return new Promise<SuccessModel>(resolve => {
+    return new Promise<PagoModel>(resolve => {
       this.http.get(`http://localhost:8888/api/api.php/buscarIngresos/${id}/`)
-        .map(res => <SuccessModel>(res.json()))
+        .map(res => <PagoModel>(res.json()))
         .subscribe(data => {
           resolve(data);
         });

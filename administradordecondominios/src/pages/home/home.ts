@@ -39,10 +39,10 @@ export class HomePage {
       }
       else {
         this.txt = "Casa / Dpto:";
+        this.usuario = this.userData.dpto;
       }
 
       this.nombreAdm = this.userData.nombreAdmin;
-      this.usuario = this.userData.dpto;
       console.log(this.userData);
     });
   }

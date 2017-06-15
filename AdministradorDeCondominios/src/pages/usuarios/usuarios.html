@@ -5,10 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     
     <ion-title>
-      Usuarios
+      <h2>Usuarios</h2>
+      <small text-wrap>La contraseña para nuevos usuarios es: {{passGral}}</small>
     </ion-title>
 
     <ion-buttons end>
@@ -22,7 +23,6 @@
 
 
 <ion-content padding>
-  <h2>La contraseña para nuevos usuarios es: {{passGral}}</h2>
   <p *ngIf="vacio == 0">
     No hay ningún usuario registrado
   </p>
